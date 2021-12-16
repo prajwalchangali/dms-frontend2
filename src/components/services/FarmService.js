@@ -17,8 +17,8 @@ const addFarmerService = (farmer) => {
 }
 
 const updateFarmerService = (farmer) => {
-    console.log(`getEmpByIdService`);
-    return axios.post(`/farmer/update`, farmer);
+    console.log(`updateService`);
+    return axios.put(`/farmer/update`, farmer);
 }
 
 const deleteFarmerService = (fid) => {

@@ -1,7 +1,10 @@
 class Farmer {
     fid;
     firstName;
-    firstName;
+    lastName;
+    mobileNumber;
+    email;
+    password;
     // salary;
     // department;
 }

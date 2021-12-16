@@ -4,11 +4,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { getAllFarmerService,addFarmerService,updateFarmerService,deleteFarmerService } from "../services/FarmService";
 // import { getEmpById, getAllEmps } from '../redux/EmpSlice';
+import axios from "axios";
 
 import { getFarmerById,getAllFarmer } from "../../redux/FarmerSlice";
+import Farmer from "../models/Farmer";
 
 const FarmerData = () => {
 
+
+    const [newFarmerObj, setNewFarmerObj] = useState(new Farmer());
+    const [updtFarmerObj, setUpdtFarmerObj] = useState(new Farmer());
+    const [displayFarmerObj, setDisplayFarmerObj] = useState(new Farmer());
+    const [updateFarmerObj, setUpdateFarmerObj] = useState(new Farmer());
     const [fid, setFid] = useState('');
     const dispatch = useDispatch();
     const farmerDataFromStore = useSelector((state) => state.farm.farmState);
@@ -17,6 +24,21 @@ const FarmerData = () => {
     const handleFarmer = (e) => {
         console.log('handleEmp');
         setFid(e.target.value);
+    }
+
+    const handleAddFarmer = (e) => {
+        console.log(e.target.value);
+        setNewFarmerObj({
+            ...newFarmerObj,
+            [e.target.name]: e.target.value,
+        });
+    }
+    const handleUpdateFarmer = (e) => {
+        console.log(e.target.value);
+        setUpdtFarmerObj({
+            ...updtFarmerObj,
+            [e.target.name]: e.target.value,
+        });
     }
 
     const submitGetFarmerById = (evt) => {
@@ -40,6 +62,36 @@ const FarmerData = () => {
             })
             .catch(() => {
                 alert(`Something is wrong!`);
+            });
+    }
+
+    const submitAddFarmer = (evt) => {
+        evt.preventDefault();
+        console.log('addFarmers');
+        axios.post(`http://localhost:8082/farmer/add`, newFarmerObj)
+            .then((response) => {
+                setDisplayFarmerObj(response.data);
+                alert('Farmer added successfully.');
+                setNewFarmerObj({ firstName:'', lastName:'',mobileNumber:'',email:'',password:''})
+            
+            })
+            .catch(() => {
+                alert("Farmer could not be added.");
+            });
+    }
+
+    const submitUpdateFarmer = (evt) => {
+        evt.preventDefault();
+        console.log('addFarmers');
+        axios.post(`http://localhost:8082/farmer/update`, updtFarmerObj)
+            .then((response) => {
+                setUpdateFarmerObj(response.data);
+                alert('Farmer details updated successfully.');
+                setNewFarmerObj({ firstName:'', lastName:'',mobileNumber:'',email:'',password:''})
+            
+            })
+            .catch(() => {
+                alert("Farmer could not be found.");
             });
     }
 
@@ -84,10 +136,103 @@ const FarmerData = () => {
             </div>
 
             <div className="col-4 border border-light shadow p-3 mb-5 bg-white">
-                <p>Some other functionality</p>
+            
+                <p>Add New Farmer</p>
+                {/* <form onSubmit={submitAddEmp}> */}
+                <div id="addNewFarmerDiv">
+                    <input
+                        type="text"
+                        id="firstName"
+                        name="firstName"
+                        value={newFarmerObj.firstName}
+                        onChange={handleAddFarmer}
+                        placeholder="Enter First Name" />
+                    <input
+                        type="text"
+                        id="lastName"
+                        name="lastName"
+                        value={newFarmerObj.lastName}
+                        onChange={handleAddFarmer}
+                        placeholder="Enter Last Name" />
+                    <input
+                        type="text"
+                        id="mobileNumber"
+                        name="mobileNumber"
+                        value={newFarmerObj.mobileNumber}
+                        onChange={handleAddFarmer}
+                        placeholder="Enter Mobile Number" />
+                     <input
+                        type="text"
+                        id="email"
+                        name="email"
+                        value={newFarmerObj.email}
+                        onChange={handleAddFarmer}
+                        placeholder="Enter Email" />   
+                     <input
+                        type="text"
+                        id="password"
+                        name="password"
+                        value={newFarmerObj.password}
+                        onChange={handleAddFarmer}
+                        placeholder="Enter password" />   
+                    <input
+                        type="submit"
+                        // type="button"
+                        value="Add Farmer"
+                        onClick={submitAddFarmer}
+                    />
+                </div>
+                <p>New Farmer Data: {displayFarmerObj.FarmerId} {displayFarmerObj.firstName} {displayFarmerObj.lastName}{displayFarmerObj.mobileNumber}{displayFarmerObj.email}</p>
             </div>
-
-
+            <div className="col-4 border border-light shadow p-3 mb-5 bg-white">
+            
+            <p>Add New Farmer</p>
+            {/* <form onSubmit={submitAddEmp}> */}
+            <div id="addNewFarmerDiv">
+                <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    // value={newFarmerObj.firstName}
+                    // onChange={handleAddFarmer}
+                    placeholder="Enter First Name" />
+                <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    // value={newFarmerObj.lastName}
+                    // onChange={handleAddFarmer}
+                    placeholder="Enter Last Name" />
+                <input
+                    type="text"
+                    id="mobileNumber"
+                    name="mobileNumber"
+                    // value={newFarmerObj.mobileNumber}
+                    // onChange={handleAddFarmer}
+                    placeholder="Enter Mobile Number" />
+                 <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    // value={newFarmerObj.email}
+                    // onChange={handleAddFarmer}
+                    placeholder="Enter Email" />   
+                 <input
+                    type="text"
+                    id="password"
+                    name="password"
+                    // value={newFarmerObj.password}
+                    // onChange={handleAddFarmer}
+                    placeholder="Enter password" />   
+                <input
+                    type="submit"
+                    // type="button"
+                    value="Add Farmer"
+                    // onClick={submitAddFarmer}
+                />
+            </div>
+            <p>New Farmer Data: {updateFarmerObj.FarmerId} {updateFarmerObj.firstName} {updateFarmerObj.lastName}{updateFarmerObj.mobileNumber}{updateFarmerObj.email}</p>
+        </div>
 
         </div>
     );
