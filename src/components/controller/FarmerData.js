@@ -83,7 +83,7 @@ const FarmerData = () => {
     const submitUpdateFarmer = (evt) => {
         evt.preventDefault();
         console.log('addFarmers');
-        axios.post(`http://localhost:8082/farmer/update`, updtFarmerObj)
+        axios.put(`http://localhost:8082/farmer/update`, updtFarmerObj)
             .then((response) => {
                 setUpdateFarmerObj(response.data);
                 alert('Farmer details updated successfully.');
