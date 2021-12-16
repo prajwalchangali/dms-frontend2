@@ -23,7 +23,7 @@ const updateFarmerService = (farmer) => {
 
 const deleteFarmerService = (fid) => {
     console.log(`deleteFarmer`);
-    return axios.post(`/farmer/delete/{farmerId}/${fid}`);
+    return axios.delete(`/farmer/delete/${fid}`);
 }
 
 

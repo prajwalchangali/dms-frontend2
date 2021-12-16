@@ -29,12 +29,16 @@ const FarmerSlice = createSlice({
         getAllFarmer: (state, action) => {
             console.log('farmSlice reducers getAllfarmer');
             state.farmList = action.payload;
-        }
-
+        },
+        deleteFarmerByID: (state, action) => {
+            console.log('farmSlice reducers deleteFarmerById');
+            state.farmList = action.payload;
+        },
+        
         // more methods will be added 
     }
 });
 
-export const { getFarmerById, getAllFarmer } = FarmerSlice.actions;
+export const { getFarmerById, getAllFarmer,deleteFarmerByID } = FarmerSlice.actions;
 
 export default FarmerSlice.reducer;

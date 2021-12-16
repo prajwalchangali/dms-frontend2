@@ -6,7 +6,7 @@ import { getAllFarmerService,addFarmerService,updateFarmerService,deleteFarmerSe
 // import { getEmpById, getAllEmps } from '../redux/EmpSlice';
 import axios from "axios";
 
-import { getFarmerById,getAllFarmer } from "../../redux/FarmerSlice";
+import { getFarmerById,getAllFarmer,deleteFarmerByID } from "../../redux/FarmerSlice";
 import Farmer from "../models/Farmer";
 
 const FarmerData = () => {
@@ -17,9 +17,11 @@ const FarmerData = () => {
     const [displayFarmerObj, setDisplayFarmerObj] = useState(new Farmer());
     const [updateFarmerObj, setUpdateFarmerObj] = useState(new Farmer());
     const [fid, setFid] = useState('');
+    const [deleteFarmer, setDeleteFarmer] = useState('');
     const dispatch = useDispatch();
     const farmerDataFromStore = useSelector((state) => state.farm.farmState);
     const farmerList = useSelector((state) => state.farm.farmList);
+    const farmerDelete = useSelector((state) => state.farm.farmerDelete);
 
     const handleFarmer = (e) => {
         console.log('handleEmp');
@@ -39,6 +41,11 @@ const FarmerData = () => {
             ...updtFarmerObj,
             [e.target.name]: e.target.value,
         });
+    }
+
+    const handleDeleteFarmer = (ev) => {
+        console.log('handleDeleteFarmer');
+        setDeleteFarmer(ev.target.value);
     }
 
     const submitGetFarmerById = (evt) => {
@@ -93,6 +100,21 @@ const FarmerData = () => {
             .catch(() => {
                 alert("Farmer could not be found.");
             });
+    }
+
+    const submitDeleteFarmer = (evt) => {
+        evt.preventDefault();
+        console.log('deleteFarmerDetails');
+        axios.delete(`http://localhost:8082/farmer/delete/${deleteFarmer}`)
+            .then((response) => {
+                alert(`Farmer details deleted successfully.`)
+                dispatch(deleteFarmerByID(response.data));             // Sending data to redux store
+
+            })
+            .catch(() => {
+                alert(`Farmer not found.`);
+            });
+
     }
 
     return (
@@ -240,6 +262,14 @@ const FarmerData = () => {
             </div>
             <p>Updated Farmer Data: {updateFarmerObj.FarmerId} {updateFarmerObj.firstName} {updateFarmerObj.lastName} {updateFarmerObj.mobileNumber} {updateFarmerObj.email}</p>
         </div>
+        <div className="col-4 border border-light shadow p-3 mb-5 bg-white">
+                <p>Delete farmer by id</p>
+                <form className="form form-group form-primary" onSubmit={submitDeleteFarmer}>
+                    <input className="form-control mt-3" type="number" id="deleteFarmer" name="deleteFarmer" value={deleteFarmer} onChange={handleDeleteFarmer} placeholder="Enter Feedback Id" autoFocus required />
+                    <input className="form-control mt-3 btn btn-primary" type="submit" value="Delete Feedback" />
+                </form>
+                {/* <p>Deleted Farmer details: {farmerDataFromStore.farmerId} {farmerDataFromStore.firstName} {farmerDataFromStore.lastName} </p> */}
+            </div>
 
         </div>
     );
