@@ -182,56 +182,63 @@ const FarmerData = () => {
                         onClick={submitAddFarmer}
                     />
                 </div>
-                <p>New Farmer Data: {displayFarmerObj.FarmerId} {displayFarmerObj.firstName} {displayFarmerObj.lastName}{displayFarmerObj.mobileNumber}{displayFarmerObj.email}</p>
+                <p>New Farmer Data: {displayFarmerObj.farmerId} {displayFarmerObj.firstName} {displayFarmerObj.lastName}{displayFarmerObj.mobileNumber}{displayFarmerObj.email}</p>
             </div>
             <div className="col-4 border border-light shadow p-3 mb-5 bg-white">
             
-            <p>Add New Farmer</p>
+            <p>Update New Farmer</p>
             {/* <form onSubmit={submitAddEmp}> */}
             <div id="addNewFarmerDiv">
+            <input
+                    type="text"
+                    id="farmerId"
+                    name="farmerId"
+                    value={updtFarmerObj.farmerId}
+                    onChange={handleUpdateFarmer}
+                    placeholder="Enter farmer Id" />
                 <input
                     type="text"
                     id="firstName"
                     name="firstName"
-                    // value={newFarmerObj.firstName}
-                    // onChange={handleAddFarmer}
+                    value={updtFarmerObj.firstName}
+                    onChange={handleUpdateFarmer}
                     placeholder="Enter First Name" />
                 <input
                     type="text"
                     id="lastName"
                     name="lastName"
-                    // value={newFarmerObj.lastName}
-                    // onChange={handleAddFarmer}
+                    value={updtFarmerObj.lastName}
+                    onChange={handleUpdateFarmer}
                     placeholder="Enter Last Name" />
                 <input
                     type="text"
                     id="mobileNumber"
                     name="mobileNumber"
-                    // value={newFarmerObj.mobileNumber}
-                    // onChange={handleAddFarmer}
+                    value={updtFarmerObj.mobileNumber}
+                    onChange={handleUpdateFarmer}
                     placeholder="Enter Mobile Number" />
                  <input
                     type="text"
                     id="email"
                     name="email"
-                    // value={newFarmerObj.email}
-                    // onChange={handleAddFarmer}
+                    value={updtFarmerObj.email}
+                    onChange={handleUpdateFarmer}
                     placeholder="Enter Email" />   
                  <input
                     type="text"
                     id="password"
                     name="password"
-                    // value={newFarmerObj.password}
-                    // onChange={handleAddFarmer}
+                    value={updtFarmerObj.password}
+                    onChange={handleUpdateFarmer}
                     placeholder="Enter password" />   
                 <input
                     type="submit"
                     // type="button"
-                    value="Add Farmer"
-                    // onClick={submitAddFarmer}
+                    value="update Farmer"
+                    onClick={submitUpdateFarmer}
                 />
             </div>
-            <p>New Farmer Data: {updateFarmerObj.FarmerId} {updateFarmerObj.firstName} {updateFarmerObj.lastName}{updateFarmerObj.mobileNumber}{updateFarmerObj.email}</p>
+            <p>Updated Farmer Data: {updateFarmerObj.FarmerId} {updateFarmerObj.firstName} {updateFarmerObj.lastName} {updateFarmerObj.mobileNumber} {updateFarmerObj.email}</p>
         </div>
 
         </div>
