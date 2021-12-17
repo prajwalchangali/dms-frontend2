@@ -9,7 +9,7 @@ import Login from "./components/Login";
 import Logout from './components/Logout';
 import Page404 from './components/Page404';
 import Register from "./components/Register";
-import FarmerData from './components/controller/FarmerData';
+import FarmerData from './components/Farmercontroller/FarmerData';
 
 const Routes = () => {
 

@@ -1,14 +1,26 @@
 
 
 import Routes from "./Routes";
-import FarmerData from "./components/controller/FarmerData";
+// import FarmerData from "./components/controller/FarmerData";
+import FarmerById from "./components/Farmercontroller/FarmerById";
+import UpdateFarmer from "./components/Farmercontroller/UpdateFarmer";
+import ViewAllFarmers from "./components/Farmercontroller/ViewAllFarmers";
+import AddFarmer from "./components/Farmercontroller/AddFarmer";
+import DeleteFarmer from "./components/Farmercontroller/DeleteFarmer";
+import FarmerData from "./components/Farmercontroller/FarmerData";
+
 const App = () => {
   return (
     <div className="bg-light">
       {/* <Routes /> */}
       {/* <farm /> */}
-      <FarmerData/>
-
+      {/* <FarmerData/> */}
+      {/* <FarmerById /> */}
+      <AddFarmer/>
+      {/* <UpdateFarmer/> */}
+      {/* <ViewAllFarmers /> */}
+      {/* <DeleteFarmer /> */}
+    
     </ div>
   );
 }

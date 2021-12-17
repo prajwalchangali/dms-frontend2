@@ -24,7 +24,7 @@ const FarmerData = () => {
     const farmerDelete = useSelector((state) => state.farm.farmerDelete);
 
     const handleFarmer = (e) => {
-        console.log('handleEmp');
+        console.log('handlefarmer');
         setFid(e.target.value);
     }
 
