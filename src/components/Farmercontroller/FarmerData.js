@@ -2,12 +2,13 @@
 import { getFarmerByIdService } from "../services/FarmService";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { getAllFarmerService,addFarmerService,updateFarmerService,deleteFarmerService } from "../services/FarmService";
+import { getAllFarmerService,addFarmerService,updateFarmerService,deleteFarmerService,companyBuysMilkService } from "../services/FarmService";
 // import { getEmpById, getAllEmps } from '../redux/EmpSlice';
 import axios from "axios";
 
 import { getFarmerById,getAllFarmer,deleteFarmerByID } from "../../redux/FarmerSlice";
 import Farmer from "../models/Farmer";
+import CompanyBuysMilk from "../models/companybuysmilk";
 
 const FarmerData = () => {
 
@@ -21,7 +22,8 @@ const FarmerData = () => {
     const dispatch = useDispatch();
     const farmerDataFromStore = useSelector((state) => state.farm.farmState);
     const farmerList = useSelector((state) => state.farm.farmList);
-    const farmerDelete = useSelector((state) => state.farm.farmerDelete);
+    const [newPaymentObj, setNewPaymentObj] = useState(new CompanyBuysMilk());
+    const [displayPaymentObj, setDisplayPaymentObj] = useState(new CompanyBuysMilk());
 
     const handleFarmer = (e) => {
         console.log('handlefarmer');
@@ -114,6 +116,30 @@ const FarmerData = () => {
             .catch(() => {
                 alert(`Farmer not found.`);
             });
+
+
+    const handleAddPayment = (e) => {
+         console.log(e.target.value);
+                setNewPaymentObj({
+                    ...newPaymentObj,
+                    [e.target.name]: e.target.value,
+                });
+            }
+
+            const submitAddPayment = (evt) => {
+                evt.preventDefault();
+                console.log('comp buys');
+                axios.post(`/payment/company/buys`, newFarmerObj)
+                    .then((response) => {
+                        setDisplayPaymentObj(response.data);
+                        alert('Farmer added successfully.');
+                        // setNewFarmerObj({ firstName:'', lastName:'',mobileNumber:'',email:'',password:''})
+                    
+                    })
+                    .catch(() => {
+                        alert("Farmer could not be added.");
+                    });
+            }
 
     }
 
@@ -270,6 +296,8 @@ const FarmerData = () => {
                 </form>
                 {/* <p>Deleted Farmer details:  {farmerDelete.firstName} {farmerDelete.lastName} </p> */}
             </div>
+
+
 
         </div>
     );

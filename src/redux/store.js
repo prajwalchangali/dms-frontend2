@@ -1,6 +1,9 @@
 // import empReducer from './EmpSlice';
 // import depReducer from './DepSlice';
 import farmReducer from './FarmerSlice';
+import companyReducer from './CompSlice';
+import customerReducer from './CustomerSlice';
+import dealerReducer from './DealerSlice';
 // steps - 
 // 1. create store - only one 
 // 2. provide the store to index.js 
@@ -19,7 +22,10 @@ const store = configureStore(
         reducer: {
             // emp: empReducer,
             // dep: depReducer
-               farm: farmReducer
+               farm: farmReducer,
+               company: companyReducer,
+               customer: customerReducer,
+               dealer : dealerReducer,
             // ,
             // anotherComponent: anotherComponentReducer
         }

@@ -25,7 +25,7 @@ const Register = (props) => {
         // swith cs 1- farmer 2- com 3-
         
 
-        axios.post(`http://localhost:8080/register`, appUser)
+        axios.post(`http://localhost:8082/register`, appUser)
             .then((response) => {
                 console.log(response.data);
                 localStorage.setItem('appUser', appUser);
@@ -65,10 +65,11 @@ const Register = (props) => {
                             onChange={handleAppUser} />
                         <div class="form-group">
                             <select class="form-control mb-3" name="role" id="role" onChange={handleAppUser}>
-                                <option value="Role">Select a role</option>
+                            <option value="User">Select a role</option>
                                 <option value="ADMIN">ADMIN</option>
-                                <option value="EMPLOYEE">EMPLOYEE</option>
-                                <option value="MANAGER">MANAGER</option>
+                                <option value="FARMER">FARMER</option>
+                                <option value="DEALER">DEALER</option>
+                                <option value="CUSTOMER">CUSTOMER</option>
                             </select>
                         </div>
                         <input
