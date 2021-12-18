@@ -4,26 +4,26 @@ import axios from 'axios';
 
 const getCustomerByIdService = (customerId) => {
     console.log(`getCustomerByIdService`);
-    return axios.get(`http://localhost:8082/customer/view/${customerId}`);
+    return axios.get(`/customer/view/${customerId}`);
 }
 const getAllCustomerService= () => {
     console.log(`getAllCustomersService`);
-    return axios.get(`http://localhost:8082/customer/all`);
+    return axios.get(`/customer/all`);
 }
 
 const AddCustomerService = (customer) => {
     console.log(`AddCustomerService`);
-    return axios.post(`http://localhost:8082/customer/add`, customer);
+    return axios.post(`/customer/add`, customer);
 }
 
 const updateCustomerService= (customer) => {
     console.log(`UpdateCustomerIdService`);
-    return axios.post(`http://localhost:8082/customer/update`, customer);
+    return axios.post(`/customer/update`, customer);
 }
 
 const deleteCustomerByIdService = (customerId) => {
     console.log(`deleteCustomerByIdService`);
-    return axios.post(`http://localhost:8082/customer/delete/${customerId}`);
+    return axios.post(`/customer/delete/${customerId}`);
 }
 
 

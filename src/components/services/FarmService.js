@@ -26,13 +26,9 @@ const deleteFarmerService = (fid) => {
     return axios.delete(`/farmer/delete/${fid}`);
 }
 
-const companyBuysMilkService =(transaction)=>{
-    console.log(`companybuysmilk`);
-    return axios.post(`/payment/company/buys`, transaction);
-
-}
 
 
 
 
-export { getFarmerByIdService, getAllFarmerService, addFarmerService, updateFarmerService, deleteFarmerService,companyBuysMilkService};
+
+export { getFarmerByIdService, getAllFarmerService, addFarmerService, updateFarmerService, deleteFarmerService};
