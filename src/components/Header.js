@@ -50,7 +50,7 @@ const Header = () => {
                     </nav>
                 </header>
             );
-        } else if (user === 'COMPANY') {
+        } else if (user === 'ADMIN') {
             return (
                 <header class="header sticky-top">
                     <h1> </h1>
@@ -95,6 +95,90 @@ const Header = () => {
             return (
                 <header class="header sticky-top">
                     <h1> This is dealer section</h1>
+                    <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-dark">
+                        <div class="container">
+                            <Link className="navbar-brand" to="/">
+                                <img src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/logo.svg"
+                                    height="24px" alt="Capgemini" />
+                            </Link>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarResponsive">
+                                <ul class="navbar-nav ml-auto">
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="//home" >Home</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/addDealer" >Register</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/viewAllCompanies" >ViewAllCompanies</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/viewCompany" >ViewCompany</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/addCustomer" >AddCustomer</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/viewCustomer" >viewCustomer</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/viewAllCustomer" >viewAllCustomers</Link>
+                                    </li>
+                                           {/* space for dealers */}
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/logout" >Logout</Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+
+
+                </header>
+            );
+        }else if (user === 'CUSTOMER') {
+            return (
+                <header class="header sticky-top">
+                    <h1> This is dealer section</h1>
+                    <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-dark">
+                        <div class="container">
+                            <Link className="navbar-brand" to="/">
+                                <img src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/logo.svg"
+                                    height="24px" alt="Capgemini" />
+                            </Link>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarResponsive">
+                                <ul class="navbar-nav ml-auto">
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="//home" >Home</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/addCustomer" >Register</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/updateCustomer" >updateDetails</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/viewDealer" >ViewDealer</Link>
+                                    </li>
+
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/viewCustomer" >viewCustomer</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/logout" >Logout</Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+
+
                 </header>
             );
         }

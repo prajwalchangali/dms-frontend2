@@ -12,7 +12,14 @@ import GetAllCompany from "./components/compcontroller/GetAllCompany";
 import ViewAllFarmers from "./components/Farmercontroller/ViewAllFarmers";
 import AddFarmer from "./components/Farmercontroller/AddFarmer";
 import DeleteFarmer from "./components/Farmercontroller/DeleteFarmer";
-
+import GetCustomerById from "./components/CustomerController/GetCustomerById";
+import GetAllCustomers from "./components/CustomerController/GetAllCustomers";
+import GetCompanyById from "./components/compcontroller/GetCompanyById";
+import AddCustomer from "./components/CustomerController/AddCustomer";
+import AddDealer from "./components/DealerController/AddDealer";
+import UpdateDealer from "./components/DealerController/UpdateDealer";
+import UpdateCustomer from "./components/CustomerController/UpdateCustomer"
+import GetDealerById  from "./components/DealerController/GetDealerById";
 const Routes = () => {
 
 
@@ -78,17 +85,50 @@ const Routes = () => {
             return (
                 <div>
                     <Router>
-                        <Header />
+                    <div>
+                          <Header />
+                          <div className="container">
+                                <Switch>
+                                    <Route exact path="/" loginStatus > <Home /> </Route>
+                                    <Route path="/home" loginStatus> <Home /> </Route>
+                                    <Route path="/addDealer"> <AddDealer /> </Route>
+                                    <Route path="/viewAllCompanies"> <GetAllCompany /> </Route>
+                                    <Route path="/viewCompany"> <GetCompanyById /> </Route>
+                                    <Route path="/addCustomer"> <AddCustomer /> </Route>
+                                   <Route path="/viewCustomer"> <GetCustomerById /> </Route>
+                                   <Route path="/viewAllCustomer"> <GetAllCustomers /> </Route>
+                                    <Route path="/logout"> <Logout /> </Route>
+                                    <Route path="/*"> <Page404 /> </Route>
+                                </Switch>
+                            </div>
+
+                    </div>    
                     </Router>
                 </div>
             );
         }
-        else{
+        else if (user === 'CUSTOMER'){
             return (
                 <div>
-                    <Router>
-                        <Header />
-                    </Router>
+                       <Router>
+                       <div>  
+                           <Header />
+                           <div className="container">
+                                <Switch>
+                                    <Route exact path="/" loginStatus > <Home /> </Route>
+                                    <Route path="/home" loginStatus> <Home /> </Route>
+                                  
+                                    
+                                    <Route path="/addCustomer"> <AddCustomer /> </Route>
+                                    <Route path="/updateCustomer"> <UpdateCustomer /> </Route>
+                                   <Route path="/viewDealer"> <GetDealerById /> </Route>
+                                    <Route path="/logout"> <Logout /> </Route>
+                                    <Route path="/*"> <Page404 /> </Route>
+                                </Switch>
+                            </div>
+
+                        </div> 
+                      </Router>
                 </div>
             );
 

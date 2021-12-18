@@ -23,7 +23,7 @@ import GetDealerById from "./components/DealerController/GetDealerById";
 const App = () => {
   return (
     <div className="bg-light">
-      {/* <Routes /> */}
+      <Routes />
       {/* <farm /> */}
       {/* <FarmerData/> */}
       {/* <FarmerById /> */}
@@ -39,9 +39,9 @@ const App = () => {
       {/* <GetAllCustomer /> */}
       {/* <GetCustomerById /> */}
       {/* <UpdateCustomer /> */}
-      <UpdateDealer /> 
-      <GetAllDealer /> 
-      <GetDealerById /> 
+      {/* <UpdateDealer />  */}
+      {/* <GetAllDealer />  */}
+      {/* <GetDealerById />  */}
 
     </ div>
   );
